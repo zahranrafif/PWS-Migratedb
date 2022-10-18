@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import migratedb.senamjantung.exceptions.NonexistentEntityException;
@@ -24,7 +25,11 @@ public class RekamMedisJpaController implements Serializable {
     public RekamMedisJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private EntityManagerFactory emf = null;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("migratedb_senamjantung_jar_0.0.1-SNAPSHOTPU");
+
+    public RekamMedisJpaController() {
+    }
+    
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
